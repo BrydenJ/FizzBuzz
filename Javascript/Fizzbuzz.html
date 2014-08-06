@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<title>FizzBuzz</title>
+		<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.10.0.css">
+		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="http://code.jquery.com/qunit/qunit-1.10.0.js"></script>
+	</head>
+
+	<body>
+		<div id="qunit"></div>
+		<div id="qunit-fixture"></div>
+
+		<script>
+
+		function GetFizzBuzz(input)
+		{
+			if(input % 3 == 0 && input % 5 == 0)
+			return "FizzBuzz";
+			if(input % 3 == 0)
+			return "Fizz";
+			if(input % 5 == 0)
+			return "Buzz";
+
+			return input;
+		}
+
+		window.onload = function()
+		{
+			var startNumber = prompt("Please enter a number to start from", "Type the number here");
+			var endNumber = prompt("Please enter a number to end at", "Type the number here");
+
+			for (i = startNumber; i <= endNumber; i++)
+			{
+				$("#Output").append(GetFizzBuzz(i) + "<br />");
+			}
+		};
+
+		</script>
+
+		<script>
+		test("Not Multiple Of 3 Or 5 Is Same Number", function() {
+			var input = 1;
+			result = GetFizzBuzz(input);
+			equal( result, 1, "We expect value to be 1" );
+		});
+		test("Multiples Of 3 Are Fizz", function() {
+			var input = 3;
+			result = GetFizzBuzz(input);
+			equal( result, "Fizz", "We expect value to be Fizz" );
+		});
+		test("Multiples Of 5 Are Buzz", function() {
+			var input = 5;
+			result = GetFizzBuzz(input);
+			equal( result, "Buzz", "We expect value to be Buzz" );
+		});
+		test("Multiples Of 3 And 5 Are FizzBuzz", function() {
+			var input = 15;
+			result = GetFizzBuzz(input);
+			equal( result, "FizzBuzz", "We expect value to be FizzBuzz" );
+		});
+		</script>
+		<br />
+		<br />
+		<b>Output</b>
+		<br />
+		<div id="Output"></div>
+	</body>
+</html>
